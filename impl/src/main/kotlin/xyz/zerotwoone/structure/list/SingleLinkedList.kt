@@ -2,11 +2,76 @@
 
 package xyz.zerotwoone.structure.list
 
-class SingleLinkedList<T> : MutableList<T> {
-    private data class LinkNode<T>(var value: T, var next: LinkNode<T>? = null)
+//TODO("Need to rewrite iterators")
+class SingleLinkedList<V> : AbstractMutableList<V>() {
+    private data class LinkNode<V>(var value: V, var next: LinkNode<V>? = null)
 
-    private inline fun LinkNode<T>?.addToRoot(value: T): LinkNode<T> {
+    private var rootNode: LinkNode<V>? = null
+
+    override val size: Int by lazy {
+        var node: LinkNode<V>? = rootNode
+        var counter = 0
+        while (node != null) {
+            counter++
+            node = node.next
+        }
+        counter
+    }
+
+    private inline fun getNodeBeforeIndex(index: Int): LinkNode<V>? {
+        var node: LinkNode<V>? = rootNode
+        for (i in 0 until index - 1)
+            node = node?.next ?: return null
+        return node
+    }
+
+    override fun add(index: Int, element: V) {
+        if (index == 0) {
+            rootNode = LinkNode(element)
+        } else {
+            val beforeNode = getNodeBeforeIndex(index) ?: throw IndexOutOfBoundsException()
+            val oldNode = beforeNode.next ?: throw IndexOutOfBoundsException()
+            LinkNode(element, oldNode).also {
+                beforeNode.next = it
+            }
+        }
+    }
+
+    private inline fun getNodeByIndex(index: Int): LinkNode<V>? {
+        var node: LinkNode<V>? = rootNode
+        for (i in 0 until index)
+            node = node?.next ?: return null
+        return node
+    }
+
+    override fun get(index: Int): V {
+        return getNodeByIndex(index)?.value ?: throw IndexOutOfBoundsException()
+    }
+
+    override fun removeAt(index: Int): V {
+        if (index == 0) {
+            val value = rootNode?.value ?: throw IndexOutOfBoundsException()
+            rootNode = null
+            return value
+        }
+
+        val beforeNode = getNodeBeforeIndex(index) ?: throw IndexOutOfBoundsException()
+        val node = beforeNode.next ?: throw IndexOutOfBoundsException()
+        beforeNode.next = node.next
+        return node.value
+    }
+
+    override fun set(index: Int, element: V): V {
+        val node = getNodeByIndex(index) ?: throw IndexOutOfBoundsException()
+        node.value = element
+        return element
+    }
+
+
+    /*
+      private inline fun LinkNode<V>?.addToRoot(value: V): LinkNode<V> {
         if (this == null) {
+            count++
             return LinkNode(value).also {
                 rootNode = it
             }
@@ -14,51 +79,23 @@ class SingleLinkedList<T> : MutableList<T> {
         return this.addToEnd(value)
     }
 
-    private inline fun LinkNode<T>.addToEnd(value: T): LinkNode<T> {
+    private inline fun LinkNode<V>.addToEnd(value: V): LinkNode<V> {
         var node = this
         while (node.next != null)
             node = node.next!!
+        count++
         return LinkNode(value).also {
             node.next = it
         }
     }
-
-    private var rootNode: LinkNode<T>? = null
-
-    private var count = 0
-    override val size: Int = count
 
     override fun add(element: T): Boolean {
         rootNode.addToRoot(element)
         return true
     }
 
-    override fun add(index: Int, element: T) {
-        TODO("not implemented")
-    }
-
-    override fun addAll(index: Int, elements: Collection<T>): Boolean {
-        TODO("not implemented")
-    }
-
-    override fun addAll(elements: Collection<T>): Boolean {
-        TODO("not implemented")
-    }
-
     override fun clear() {
         rootNode = null
-    }
-
-    override fun contains(element: T): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun containsAll(elements: Collection<T>): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun indexOf(element: T): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun isEmpty(): Boolean = count == 0
@@ -75,37 +112,10 @@ class SingleLinkedList<T> : MutableList<T> {
         }
 
         override fun remove() {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            TODO("not implemented")
         }
     }
 
-    override fun lastIndexOf(element: T): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun listIterator(): MutableListIterator<T> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun listIterator(index: Int): MutableListIterator<T> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun remove(element: T): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun removeAll(elements: Collection<T>): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun removeAt(index: Int): T {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun retainAll(elements: Collection<T>): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
     private inline fun getNodeByIndex(index: Int): LinkNode<T>? {
         var node: LinkNode<T>? = rootNode
@@ -122,9 +132,5 @@ class SingleLinkedList<T> : MutableList<T> {
         val node = getNodeByIndex(index) ?: throw IndexOutOfBoundsException()
         node.value = element
         return element
-    }
-
-    override fun subList(fromIndex: Int, toIndex: Int): MutableList<T> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    }*/
 }
