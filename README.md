@@ -1,12 +1,14 @@
 # Data structures and algorithms
 
 ### Data structures
-- [ ] SingleLinkedList
+- [X] SingleLinkedList
 - [X] Undirected graph
 - [X] Directed graph
-- [ ] Binary search tree
+- [X] Binary search tree
+- [X] Hashmap
 ### Algorithms
 - [X] Bubble sort
+- [X] Quick sort
 - [ ] Binary search
 - [ ] BFS
 - [ ] DFS

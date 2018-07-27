@@ -5,15 +5,17 @@ import org.junit.Test
 class LinkedListTest {
     @Test
     fun addTest() {
-        val list = SingleLinkedList<Int>()
-        val item = 1
-        list.add(item)
-        assert(item == list[0])
+        SingleLinkedList<Int>().apply {
+            val item = 1
+            add(item)
+            assert(item == get(0))
+        }
     }
 
     @Test(expected = IndexOutOfBoundsException::class)
     fun getTest() {
-        val list = SingleLinkedList<Int>()
-        list[2]
+        SingleLinkedList<Int>().apply {
+            get(2)
+        }
     }
 }
