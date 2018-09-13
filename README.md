@@ -13,3 +13,4 @@
 - [ ] BFS
 - [ ] DFS
 - [ ] Dijkstra
+- [ ] Standard deviation
