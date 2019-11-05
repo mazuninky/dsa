@@ -1,32 +1,29 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
-    base
+    application
+    kotlin("jvm") version "1.3.50"
 }
 
-allprojects {
-    repositories {
-        jcenter()
-        google()
-        mavenCentral()
-        mavenLocal()
-        maven(url = "https://kotlin.bintray.com/kotlinx")
-        maven(url = "http://dl.bintray.com/kotlin/kotlin-eap")
-    }
+repositories {
+    jcenter()
+    mavenCentral()
 }
 
-buildscript {
-    repositories {
-        jcenter()
-        google()
-        mavenCentral()
-        mavenLocal()
-        gradlePluginPortal()
-        maven(url = "https://kotlin.bintray.com/kotlinx")
-        maven(url = "http://dl.bintray.com/kotlin/kotlin-eap")
-    }
-    dependencies {
-        //classpath(Config.BuildPlugins.androidGradle)
-        //classpath(Config.BuildPlugins.serializationGradlePlugin)
-        classpath(kotlin("gradle-plugin", version = Config.Versions.kotlin))
-       // classpath(Config.BuildPlugins.nativeGradlePlugin)
-    }
+application {
+    mainClassName = "xyz.mazuninky.dsa.runner.MainKt"
+}
+
+dependencies {
+    implementation(kotlin("stdlib-jdk8"))
+    testImplementation(kotlin("test"))
+    testImplementation("org.junit.jupiter:junit-jupiter:5.5.2")
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions.jvmTarget = "1.8"
 }
