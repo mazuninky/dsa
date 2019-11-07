@@ -1,16 +1,23 @@
 package xyz.mazuninky.dsa.algorithm
 
+import xyz.mazuninky.dsa.base.KList
+import xyz.mazuninky.dsa.base.isEmpty
+
 val IntRange.middle: Int
     get() = (start + endInclusive) / 2
 
-fun <T> List<T>.binarySearch(item: T, comparator: Comparator<T>): Boolean {
+/**
+ * Binary search
+ * O(log n)
+ */
+fun <T> KList<T>.binarySearch(item: T, comparator: Comparator<T>): Boolean {
     if (isEmpty())
         return false
 
     return binarySearchOn(item, comparator, IntRange(0, size))
 }
 
-fun <T> List<T>.binarySearchOn(item: T, comparator: Comparator<T>, range: IntRange): Boolean {
+fun <T> KList<T>.binarySearchOn(item: T, comparator: Comparator<T>, range: IntRange): Boolean {
     val middle = range.middle
     val result = comparator.compare(item, get(middle))
     return when {
