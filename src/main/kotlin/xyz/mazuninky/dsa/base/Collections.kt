@@ -15,3 +15,7 @@ fun <T> DSACollection<T>.isNonEmpty(): Boolean {
 interface DSAList<T> : DSACollection<T> {
     operator fun get(index: Int): T
 }
+
+interface DSAMutableList<T> : DSAList<T> {
+    operator fun set(index: Int, item: T)
+}
