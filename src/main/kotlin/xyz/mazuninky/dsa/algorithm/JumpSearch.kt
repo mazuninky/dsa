@@ -18,7 +18,6 @@ fun <T> KList<T>.jumpSearch(item: T, comparator: Comparator<T>): Boolean {
     return nextBlock(item, comparator, 0, blockSize, blocks)
 }
 
-
 fun <T> KList<T>.nextBlock(item: T, comparator: Comparator<T>, blockNum: Int, blockSize: Int, blocks: Int): Boolean {
     if (blockNum == blockSize)
         return false
@@ -29,7 +28,15 @@ fun <T> KList<T>.nextBlock(item: T, comparator: Comparator<T>, blockNum: Int, bl
         return true
 
     if (compare > 0) {
-        return nextBlock(item, comparator, blockNum + 1, blockSize, blocks)
+        if (blockNum != blocks - 1) {
+            return nextBlock(item, comparator, blockNum + 1, blockSize, blocks)
+        } else {
+            for (i in (blockNum * blockSize + 1) until ((blockNum + 1) * blockSize)) {
+                if (comparator.compare(item, get(i)) == 0) {
+                    return true
+                }
+            }
+        }
     } else {
         if (blockNum == 0)
             return false
