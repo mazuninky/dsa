@@ -3,7 +3,7 @@ package xyz.mazuninky.dsa.structure.base
 import xyz.mazuninky.dsa.base.DSAList
 import xyz.mazuninky.dsa.base.DSAMutableList
 
-class LinkedDSAListIterator<T>(root: ListNode<T>?) : Iterator<T> {
+class DSALinkedListIterator<T>(root: ListNode<T>?) : Iterator<T> {
     private var currentNode = root
 
     override fun hasNext(): Boolean {
@@ -111,7 +111,7 @@ abstract class AbstractLinkedList<T : Any> : DSAList<T> {
     }
 
     override fun iterator(): Iterator<T> {
-        return LinkedDSAListIterator(root)
+        return DSALinkedListIterator(root)
     }
 }
 

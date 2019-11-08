@@ -1,8 +1,6 @@
 package xyz.mazuninky.dsa.structure
 
 import xyz.mazuninky.dsa.base.DSAMutableStack
-import xyz.mazuninky.dsa.base.DSAStack
-import xyz.mazuninky.dsa.structure.base.AbstractMutableLinkedList
 import xyz.mazuninky.dsa.structure.base.ListNode
 import xyz.mazuninky.dsa.structure.base.forEach
 
