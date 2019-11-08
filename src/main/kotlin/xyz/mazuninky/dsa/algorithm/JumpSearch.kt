@@ -6,6 +6,10 @@ import kotlin.math.roundToInt
 import kotlin.math.sqrt
 import kotlin.math.truncate
 
+/**
+ * Jump search
+ * O(n) = sqrt(n)
+ */
 fun <T> KList<T>.jumpSearch(item: T, comparator: Comparator<T>): Boolean {
     val blockSize = truncate(sqrt(size.toDouble())).roundToInt()
 
