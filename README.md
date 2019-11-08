@@ -4,4 +4,4 @@
 ### Algorithms
 - [X] Linear search
 - [X] Binary search
-- [ ] Jump search
+- [X] Jump search
