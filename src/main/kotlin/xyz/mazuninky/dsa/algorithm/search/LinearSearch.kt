@@ -1,4 +1,4 @@
-package xyz.mazuninky.dsa.algorithm
+package xyz.mazuninky.dsa.algorithm.search
 
 /**
  * Linear search
