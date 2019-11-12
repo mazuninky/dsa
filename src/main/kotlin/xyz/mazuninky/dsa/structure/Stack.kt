@@ -1,41 +1,27 @@
 package xyz.mazuninky.dsa.structure
 
 import xyz.mazuninky.dsa.base.DSAMutableStack
+import xyz.mazuninky.dsa.base.removeFirst
 import xyz.mazuninky.dsa.structure.base.ListNode
 import xyz.mazuninky.dsa.structure.base.forEach
 
 class DSALinkedStack<T : Any> : DSAMutableStack<T> {
+    private val linkedList = DSAMutableLinkedList<T>()
+
     override val size: Int
         get() {
-            var size = 0
-            root.forEach { size++ }
-            return size
+            return linkedList.size
         }
 
-    private var root: ListNode<T>? = null
-
     override fun pop(): T {
-        val lastNode = checkNotNull(root)
-
-        root = lastNode.next
-
-        return lastNode.value
+        return linkedList.removeFirst()
     }
 
     override fun peek(): T {
-        val lastNode = checkNotNull(root)
-
-        return lastNode.value
+        return linkedList.first()
     }
 
     override fun push(item: T) {
-        val node = ListNode(item)
-        if (root == null) {
-            root = node
-            return
-        }
-
-        node.next = root
-        root = node
+        linkedList.add(item)
     }
 }

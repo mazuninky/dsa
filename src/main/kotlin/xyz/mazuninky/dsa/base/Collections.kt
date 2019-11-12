@@ -10,20 +10,13 @@ interface DSAMutableCollection<T> : DSACollection<T>, MutableIterable<T> {
     fun add(item: T)
 }
 
-fun <T> DSACollection<T>.isEmpty(): Boolean {
-    return size == 0
-}
-
-fun <T> DSACollection<T>.isNonEmpty(): Boolean {
-    return size != 0
-}
-
 interface DSAList<T> : DSACollection<T> {
     operator fun get(index: Int): T
 }
 
 interface DSAMutableList<T> : DSAList<T>, DSAMutableCollection<T> {
     operator fun set(index: Int, item: T)
+    fun remove(index: Int): T
 }
 
 interface DSAStack<T> {
