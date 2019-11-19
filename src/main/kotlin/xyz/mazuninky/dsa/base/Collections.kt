@@ -23,8 +23,11 @@ interface DSAStack<T> {
     val size: Int
     fun pop(): T
     fun peek(): T
+    fun push(item: T)
 }
 
-interface DSAMutableStack<T> : DSAStack<T> {
-    fun push(item: T)
+interface DSAQueue<T> {
+    val size: Int
+    fun dequeue(): T
+    fun enqueue(item: T)
 }
