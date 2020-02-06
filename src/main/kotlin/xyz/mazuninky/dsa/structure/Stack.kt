@@ -2,6 +2,7 @@ package xyz.mazuninky.dsa.structure
 
 import xyz.mazuninky.dsa.base.DSAStack
 import xyz.mazuninky.dsa.base.removeFirst
+import xyz.mazuninky.dsa.structure.list.DSAMutableLinkedList
 
 class DSALinkedStack<T : Any> : DSAStack<T> {
     private val linkedList = DSAMutableLinkedList<T>()

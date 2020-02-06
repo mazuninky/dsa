@@ -2,6 +2,7 @@ package xyz.mazuninky.dsa.old.algorithm.statistics
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import xyz.mazuninky.dsa.algorithm.statistics.standardDeviation
 
 
 class StandardDeviationTest {

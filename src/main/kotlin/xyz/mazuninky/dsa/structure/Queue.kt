@@ -1,6 +1,7 @@
 package xyz.mazuninky.dsa.structure
 
 import xyz.mazuninky.dsa.base.DSAQueue
+import xyz.mazuninky.dsa.structure.list.DSAMutableLinkedList
 
 class Queue<T : Any> : DSAQueue<T> {
     private val linkedList = DSAMutableLinkedList<T>()

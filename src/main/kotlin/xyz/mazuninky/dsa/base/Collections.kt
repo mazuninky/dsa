@@ -31,3 +31,12 @@ interface DSAQueue<T> {
     fun dequeue(): T
     fun enqueue(item: T)
 }
+
+interface DSAMap<K, V> {
+    val size: Int
+    fun get(key: K): V
+}
+
+interface DSAMutableMap<K, V> : DSAMap<K, V> {
+    fun add(key: K): V
+}

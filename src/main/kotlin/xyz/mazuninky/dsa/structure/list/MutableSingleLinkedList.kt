@@ -1,7 +1,8 @@
-package xyz.mazuninky.dsa.structure.base
+package xyz.mazuninky.dsa.structure.list
 
-import xyz.mazuninky.dsa.base.DSAList
 import xyz.mazuninky.dsa.base.DSAMutableList
+import xyz.mazuninky.dsa.structure.base.ListNode
+import xyz.mazuninky.dsa.structure.base.iterateNodeWithIndex
 
 class DSASingleLinkedListMutableIterator<T : Any>(root: ListNode<T>?,
                                                   private val list: AbstractMutableLinkedList<T>) : MutableIterator<T> {

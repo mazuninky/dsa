@@ -1,7 +1,4 @@
-package xyz.mazuninky.dsa.structure
-
-import xyz.mazuninky.dsa.base.DSAList
-import xyz.mazuninky.dsa.structure.base.*
+package xyz.mazuninky.dsa.structure.list
 
 class DSALinkedList<T : Any> : AbstractLinkedList<T>()
 

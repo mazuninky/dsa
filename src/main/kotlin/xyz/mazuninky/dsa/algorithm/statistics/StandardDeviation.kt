@@ -1,4 +1,4 @@
-package xyz.mazuninky.dsa.old.algorithm.statistics
+package xyz.mazuninky.dsa.algorithm.statistics
 
 import kotlin.math.pow
 import kotlin.math.sqrt

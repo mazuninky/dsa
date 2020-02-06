@@ -1,7 +1,9 @@
-package xyz.mazuninky.dsa.structure.base
+package xyz.mazuninky.dsa.structure.list
 
 import xyz.mazuninky.dsa.base.DSAList
-import xyz.mazuninky.dsa.base.DSAMutableList
+import xyz.mazuninky.dsa.structure.base.ListNode
+import xyz.mazuninky.dsa.structure.base.forEach
+import xyz.mazuninky.dsa.structure.base.iterateNodeWithIndex
 
 class DSASingleLinkedListIterator<T>(root: ListNode<T>?) : Iterator<T> {
     private var currentNode = root
